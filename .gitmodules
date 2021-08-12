@@ -1,0 +1,4 @@
+[submodule "code/containers"]
+	path = code/containers
+	url = /scratch1/03201/jbwexler/openneuro_derivatives_tests/containers
+	datalad-id = b02e63c2-62c1-11e9-82b0-52540040489c

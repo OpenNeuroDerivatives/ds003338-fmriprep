@@ -3,15 +3,21 @@
 	url = /scratch1/03201/jbwexler/openneuro_derivatives_tests/containers
 	datalad-id = b02e63c2-62c1-11e9-82b0-52540040489c
 	datalad-url = /scratch1/03201/jbwexler/openneuro_derivatives_tests/containers
-[submodule "sourcedata/ds003338"]
-	path = sourcedata/ds003338
-	url = /scratch1/03201/jbwexler/openneuro_derivatives_tests/raw/ds003338
-	datalad-id = 80e07c69-1f2c-4204-9914-32ecf65aa1e0
-	datalad-url = /scratch1/03201/jbwexler/openneuro_derivatives_tests/raw/ds003338
 [submodule "code/tacc-openneuro"]
 	path = code/tacc-openneuro
 	url = https://github.com/poldracklab/tacc-openneuro.git
-[submodule "sourcedata/ds003338-freesurfer"]
-	path = sourcedata/ds003338-freesurfer
-	url = ./sourcedata/ds003338-freesurfer
-	datalad-id = 26cfee11-807e-480a-aff2-96a2c01e4da0
+[submodule "sourcedata/freesurfer/code/containers"]
+	path = sourcedata/freesurfer/code/containers
+	url = http://datasets.datalad.org/repronim/containers/.git
+	datalad-id = b02e63c2-62c1-11e9-82b0-52540040489c
+[submodule "sourcedata/freesurfer/code/tacc-openneuro"]
+	path = sourcedata/freesurfer/code/tacc-openneuro
+	url = https://github.com/poldracklab/tacc-openneuro.git
+[submodule "sourcedata/freesurfer/sourcedata/raw"]
+	path = sourcedata/freesurfer/sourcedata/raw
+	url = https://github.com/OpenNeuroDatasets/ds003338.git
+	datalad-id = 80e07c69-1f2c-4204-9914-32ecf65aa1e0
+[submodule "sourcedata/raw"]
+	path = sourcedata/raw
+	url = /scratch1/03201/jbwexler/openneuro_derivatives_tests/raw/ds003338
+	datalad-id = 80e07c69-1f2c-4204-9914-32ecf65aa1e0

@@ -1,1 +1,4 @@
-../../../../.git/annex/objects/57/zM/MD5E-s250--2bfb94953f9949bb606d231f41d01180/MD5E-s250--2bfb94953f9949bb606d231f41d01180
+WARNING (08/23/21 15:38:24): LAUNCHER_WORKDIR variable not set. Using current directory.
+using /tmp/launcher.3451902.hostlist.1BdCnjvM to get hosts
+starting job on c207-017
+Warning: Permanently added 'c207-017' (ED25519) to the list of known hosts.

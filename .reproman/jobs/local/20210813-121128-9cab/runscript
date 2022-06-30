@@ -1,1 +1,70 @@
-../../../../.git/annex/objects/Q4/Xg/MD5E-s2056--e60a2b63c0b45ea9b6973036c40db6fe/MD5E-s2056--e60a2b63c0b45ea9b6973036c40db6fe
+#!/bin/sh
+
+set -eu
+
+jobid=20210813-121128-9cab
+subjob=$1
+num_subjobs=20
+
+metadir=/scratch1/03201/jbwexler/openneuro_derivatives_tests/derivatives/fmriprep/ds003338-fmriprep/.reproman/jobs/local/20210813-121128-9cab
+rootdir=/home1/03201/jbwexler/.reproman/run-root
+workdir=/scratch1/03201/jbwexler/openneuro_derivatives_tests/derivatives/fmriprep/ds003338-fmriprep
+
+_reproman_cmd_idx=$(($subjob + 1))
+export _reproman_cmd_idx
+
+echo "submitted" >"$metadir/status.$subjob"
+echo "[ReproMan] pre-command..."
+
+cd "$workdir"
+
+get_command () {
+    perl -n0e \
+         '$idx=$ENV{_reproman_cmd_idx}; print "$_" if $. == $idx;' \
+         "$metadir/command-array"
+}
+
+cmd=$(get_command)
+if test -z "$cmd"
+then
+    echo "[ReproMan] failed getting command at position $_reproman_cmd_idx" >&2
+    echo "pre-command failure" >"$metadir/status.$subjob"
+    exit 1
+fi
+
+echo "running" >"$metadir/status.$subjob"
+echo "[ReproMan] executing command $cmd"
+echo "[ReproMan] ... within $PWD"
+/bin/sh -c "$cmd" && \
+    echo "succeeded" >"$metadir/status.$subjob" || \
+    (echo "failed: $?" >"$metadir/status.$subjob";
+     mkdir -p "$metadir/failed" && touch "$metadir/failed/$subjob")
+
+if test $num_subjobs -eq $_reproman_cmd_idx
+then
+# Not all jobs should do the cleanup. Ideally none of them should and there
+# should be some post-job cleanup triggered through the batch system. But, at
+# least for now, below is a brittle solution were the last job waits until it
+# sees that all other jobs have exited and then runs the post-command stuff.
+nstatus () {
+    grep -E '^(succeed|fail)' "$metadir"/status.* | wc -l
+}
+
+echo "[ReproMan] waiting for all jobs to complete before running post-command..."
+while test $(nstatus) -lt $num_subjobs
+do
+    sleep 1
+done
+
+echo "[ReproMan] post-command..."
+
+
+
+echo "Using DataLad version $(datalad --version)"  # for debugging
+msg="[ReproMan] save results for $jobid"
+datalad save --recursive -m"$msg" . .reproman >/dev/null 2>&1
+git update-ref refs/reproman/$jobid HEAD
+
+mkdir -p "$rootdir/completed/"
+touch "$rootdir/completed/$jobid"
+fi

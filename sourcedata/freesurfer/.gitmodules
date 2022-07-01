@@ -1,0 +1,13 @@
+[submodule "code/containers"]
+	path = code/containers
+	url = http://datasets.datalad.org/repronim/containers/.git
+	datalad-id = b02e63c2-62c1-11e9-82b0-52540040489c
+	datalad-url = ///repronim/containers
+[submodule "sourcedata/ds003338"]
+	path = sourcedata/ds003338
+	url = https://github.com/OpenNeuroDatasets/ds003338.git
+	datalad-id = 80e07c69-1f2c-4204-9914-32ecf65aa1e0
+	datalad-url = https://github.com/OpenNeuroDatasets/ds003338.git
+[submodule "code/tacc-openneuro"]
+	path = code/tacc-openneuro
+	url = https://github.com/poldracklab/tacc-openneuro.git

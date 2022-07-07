@@ -1,0 +1,34 @@
+Traceback (most recent call last):
+  File "/usr/local/miniconda/lib/python3.7/site-packages/fmriprep/cli/run.py", line 105, in main
+    fmriprep_wf.run(**config.nipype.get_plugin())
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/workflows.py", line 638, in run
+    runner.run(execgraph, updatehash=updatehash, config=self.config)
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/plugins/base.py", line 192, in run
+    report_nodes_not_run(notrun)
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/plugins/tools.py", line 97, in report_nodes_not_run
+    ("Workflow did not execute cleanly. " "Check log for details")
+RuntimeError: Workflow did not execute cleanly. Check log for details
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/miniconda/lib/python3.7/site-packages/fmriprep/cli/run.py", line 134, in main
+    raise RuntimeError(msg) from e
+RuntimeError: Issue encountered while running fMRIPrep.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/miniconda/bin/fmriprep", line 10, in <module>
+    sys.exit(main())
+  File "/usr/local/miniconda/lib/python3.7/site-packages/fmriprep/cli/run.py", line 186, in main
+    write_bidsignore(config.execution.fmriprep_dir)
+  File "/usr/local/miniconda/lib/python3.7/site-packages/fmriprep/utils/bids.py", line 21, in write_bidsignore
+    ignore_file.write_text("\n".join(bids_ignore) + "\n")
+  File "/usr/local/miniconda/lib/python3.7/pathlib.py", line 1208, in write_text
+    with self.open(mode='w', encoding=encoding, errors=errors) as f:
+  File "/usr/local/miniconda/lib/python3.7/pathlib.py", line 1176, in open
+    opener=self._opener)
+  File "/usr/local/miniconda/lib/python3.7/pathlib.py", line 1030, in _opener
+    return self._accessor.open(self, flags, mode)
+PermissionError: [Errno 13] Permission denied: '/scratch1/03201/jbwexler/openneuro_derivatives_tests/derivatives/fmriprep/ds003338-fmriprep/.bidsignore'

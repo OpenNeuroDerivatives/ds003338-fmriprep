@@ -1,0 +1,22 @@
+Traceback (most recent call last):
+  File "/usr/local/miniconda/bin/fmriprep", line 6, in <module>
+    from fmriprep.cli.run import main
+  File "/usr/local/miniconda/lib/python3.7/site-packages/fmriprep/cli/run.py", line 4, in <module>
+    from .. import config
+  File "/usr/local/miniconda/lib/python3.7/site-packages/fmriprep/config.py", line 96, in <module>
+    from templateflow import __version__ as _tf_ver
+  File "/usr/local/miniconda/lib/python3.7/site-packages/templateflow/__init__.py", line 19, in <module>
+    from . import api
+  File "/usr/local/miniconda/lib/python3.7/site-packages/templateflow/api.py", line 7, in <module>
+    from .conf import TF_LAYOUT, TF_S3_ROOT, TF_USE_DATALAD
+  File "/usr/local/miniconda/lib/python3.7/site-packages/templateflow/conf/__init__.py", line 42, in <module>
+    _update_s3(TF_HOME, local=True, overwrite=True)
+  File "/usr/local/miniconda/lib/python3.7/site-packages/templateflow/conf/_s3.py", line 20, in update
+    retval = _update_skeleton(skel_file, dest, overwrite=overwrite, silent=silent)
+  File "/usr/local/miniconda/lib/python3.7/site-packages/templateflow/conf/_s3.py", line 55, in _update_skeleton
+    zipref.extractall(str(dest))
+  File "/usr/local/miniconda/lib/python3.7/zipfile.py", line 1616, in extractall
+    self._extract_member(zipinfo, path, pwd)
+  File "/usr/local/miniconda/lib/python3.7/zipfile.py", line 1666, in _extract_member
+    os.mkdir(targetpath)
+FileExistsError: [Errno 17] File exists: '/scratch1/03201/jbwexler/openneuro_derivatives_tests/derivatives/fmriprep/ds003338-fmriprep/code/containers/binds/HOME/.cache/templateflow/tpl-Fischer344'
